@@ -87,10 +87,12 @@ def play_game(p1, p2):
         #                                 '3':'40',
         #                                 '4': '40'}))+" score p1:p2")
 
-    if points_p1 == 4:
+    if points_p1 == 4 and points_p2 < 3:
         return "game p1"
-    elif points_p2 == 4:
+    elif points_p2 == 4 and points_p1 < 3:
         return "game p2"
+    elif points_p1 == points_p2 == 4:
+        return play_deuce(p1, p2)
 
 
 def play_point(p1, p2):
@@ -109,3 +111,24 @@ def play_point(p1, p2):
     else:
         return "draw"
 
+
+def play_deuce(p1, p2):
+    """
+    Function to simulate a deuce played if the game is a draw at 40-40.
+    :param p1: player instance nb1
+    :param p2: player instance nb2
+    :return: string outcome of the deuce point
+    """
+    deuce_points = 0
+    while -2 < deuce_points < 2:
+        deuce_outcome = play_point(p1, p2)
+        if deuce_outcome == "point p1":
+            deuce_points +=1
+        elif deuce_outcome == "point p2":
+            deuce_points -=1
+        print("Deuce points are {}".format(deuce_points))
+
+    if deuce_points == 2:
+        return "game p1"
+    elif deuce_points == -2:
+        return "game p2"

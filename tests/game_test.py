@@ -8,6 +8,7 @@ from src.players import Player
 
 test_player1 = Player(1, 0.8, 0.8, 0.8)
 test_player2 = Player(1, 0.2, 0.2, 0.2)
+test_player3 = Player(1, 0.8, 0.8, 0.8)
 
 test_bracket = {'seed': 1,
                 'p1': test_player1,
@@ -36,5 +37,10 @@ def test_play_point():
     print(output)
 
 
+def test_play_deuce():
+    output = game.play_deuce(test_player1, test_player3)
+    print(output)
+
+
 if __name__ == '__main__':
-    test_play_match()
+    test_play_deuce()
