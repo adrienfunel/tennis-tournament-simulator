@@ -9,14 +9,13 @@ import random
 def play_match(bracket):
     player1 = bracket['p1']
     player2 = bracket['p2']
-    # print(player1)
-    # print(player2)
+
     # score string example: 6-2;3-6;7-6;6-1
 
     # Play the tennis game here
     sets_p1 = 0
     sets_p2 = 0
-    while sets_p1 < 3 and sets_p1 < 3:
+    while sets_p1 < 3 and sets_p2 < 3:
         set_outcome = play_set(player1, player2)
         if set_outcome == "set p1":
             sets_p1 +=1
@@ -34,17 +33,15 @@ def play_match(bracket):
                     'winner': winner,
                     'score': '6-2'})
 
-    print(bracket)
-
     return bracket
 
 
 def play_set(p1, p2):
     """
     Function to simulate a set.
-    :param p1:
-    :param p2:
-    :return:
+    :param p1: player instance nb1
+    :param p2: player instance nb2
+    :return: string outcome of the set
     """
     games_p1 = 0
     games_p2 = 0
@@ -64,9 +61,9 @@ def play_set(p1, p2):
 def play_game(p1, p2):
     """
     Function to simulate a game.
-    :param p1:
-    :param p2:
-    :return:
+    :param p1: player instance nb1
+    :param p2: player instance nb2
+    :return: string outcome of the game
 
     1pt => 15
     2pts => 30
@@ -84,7 +81,11 @@ def play_game(p1, p2):
             points_p2 +=1
         elif point_outcome == "draw":
             pass
-        print("{}:{} score p1:p2".format(points_p1, points_p2))
+        # print("{}:{}".format(points_p1, points_p2)
+        #       .translate(str.maketrans({'1':'15',
+        #                                 '2':'30',
+        #                                 '3':'40',
+        #                                 '4': '40'}))+" score p1:p2")
 
     if points_p1 == 4:
         return "game p1"
@@ -95,9 +96,9 @@ def play_game(p1, p2):
 def play_point(p1, p2):
     """
     Function to simulate a single point being played.
-    :param p1:
-    :param p2:
-    :return: outcome of the point
+    :param p1: player instance nb1
+    :param p2: player instance nb2
+    :return: string outcome of the point
     """
     score1 = p1.power * p1.technique * p1.endurance * random.uniform(0, 1)
     score2 = p2.power * p2.technique * p2.endurance * random.uniform(0, 1)
