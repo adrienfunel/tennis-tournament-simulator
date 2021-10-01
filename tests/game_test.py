@@ -42,5 +42,10 @@ def test_play_deuce():
     print(output)
 
 
+def test_play_tiebreak():
+    output = game.play_tiebreak(test_player1, test_player3)
+    print(output)
+
+
 if __name__ == '__main__':
-    test_play_deuce()
+    test_play_tiebreak()

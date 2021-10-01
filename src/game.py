@@ -132,3 +132,29 @@ def play_deuce(p1, p2):
         return "game p1"
     elif deuce_points == -2:
         return "game p2"
+
+
+def play_tiebreak(p1, p2):
+    """
+    Function to simulate a tiebreak played if the set is a draw at 6-6.
+    :param p1: player instance nb1
+    :param p2: player instance nb2
+    :return: string outcome of the tiebreak
+    Tiebreak can be won in 7pts with a difference of 2.
+    """
+    tie_score = [0, 0]
+
+    while not (tie_score[0] >= 7 and abs(tie_score[0] - tie_score[1]) >= 2) \
+            and not (tie_score[1] >= 7 and abs(tie_score[0] - tie_score[1]) >= 2):
+        tiebreak_outcome = play_point(p1, p2)
+        if tiebreak_outcome == "point p1":
+            tie_score[0] +=1
+        elif tiebreak_outcome == "point p2":
+            tie_score[1] +=1
+        print("Tiebreak score is {}".format(tie_score))
+
+    print("Tiebreak final score is {}:{}".format(tie_score[0], tie_score[1]))
+    if tie_score[0] > tie_score[1]:
+        return "set p1"
+    elif tie_score[0] < tie_score[1]:
+        return "set p2"
