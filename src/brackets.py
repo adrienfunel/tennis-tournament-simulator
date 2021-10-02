@@ -5,7 +5,7 @@ Summary: generate tournament brackets
 """
 import math
 
-from game import play_game
+from game import play_match
 
 
 class Bracket:
@@ -45,6 +45,6 @@ class Bracket:
                  'score': ''}
             )
 
-    def play_games(self):
-        self.brackets = list(map(play_game, self.brackets))
+    def play_matches(self):
+        self.brackets = list(map(play_match, self.brackets))
 
