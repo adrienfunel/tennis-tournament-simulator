@@ -1,4 +1,4 @@
-# tennis-tournament-simulator
+# tennis-tournament-simulator :tennis:
 Service designed to simulate a multi-player tennis tournament and provide the outcome
 
 ## Description
@@ -16,7 +16,36 @@ to produce data such as a list of all games played and their results.
 long as your assumptions do not oversimplify the exercise. For example, simulating an entire match
 with a 50/50 coin toss is too much.
 
+
 ## Technical Specifications
+
+### Player class
+'''
+{'Id': int,
+'Power': float,
+'Technique': float,
+'Endurance': float
+}
+'''
+
+### Bracket class
+'''
+{'seed': int,
+'p1': object,
+'p2': object,
+'winner': object,
+'score': string
+}
+'''
 
 
 ## What's missing
+- A data layer to store the player's information
+- A front end
+- Include an additional feature to represent the advantage the player who serves get
+- Comprehensive unit testing
+
+
+## References:
+[Important skills for a tennis player](https://tennisfiles.com/8-critical-tennis-skills-how-test-them/)
+[Tennis results on the BBC website](https://www.bbc.co.uk/sport/tennis/results)
