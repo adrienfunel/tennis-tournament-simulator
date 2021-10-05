@@ -16,8 +16,7 @@ def set_logger():
     log_level = 'INFO'
     logging_format = '%(asctime)s:%(name)s:%(message)s'
 
-    file_handler = logging.FileHandler('Tournament_logs.log')
-    file_handler.suffix('%Y%m%d')
+    file_handler = logging.FileHandler(os.path.join(log_dir,'Tournament_logs.log'))
     file_handler.setFormatter(logging.Formatter(logging_format))
     file_handler.setLevel(log_level)
 
