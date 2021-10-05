@@ -5,8 +5,14 @@ Summary: the main entry point
 """
 import time
 import math
+import logging
 
+from common import my_logger
 from organisation import play_rounds
+
+
+def setup():
+    my_logger.set_logger()
 
 def main():
     # main entry point
@@ -26,5 +32,6 @@ def get_input_players():
 
 if __name__ == "__main__":
     start_time = time.time()
+    setup()
     main()
     print("--- %s seconds ---" % round((time.time() - start_time), 6))
