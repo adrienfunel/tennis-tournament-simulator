@@ -20,8 +20,12 @@ def set_logger():
     file_handler.setFormatter(logging.Formatter(logging_format))
     file_handler.setLevel(log_level)
 
+    stream_handler = logging.StreamHandler()
+    stream_handler.setFormatter(logging.Formatter(logging_format))
+
     logger = logging.getLogger()
     logger.setLevel(log_level)
     logger.addHandler(file_handler)
+    logger.addHandler(stream_handler)
 
     logger.info("Logging started in {}".format(log_dir))
