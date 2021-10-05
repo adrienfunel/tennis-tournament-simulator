@@ -12,7 +12,7 @@ test_player3 = Player(1, 0.8, 0.8, 0.8)
 
 test_bracket = {'seed': 1,
                 'p1': test_player1,
-                'p2': test_player2,
+                'p2': test_player3,
                 'winner': None,
                 'score': ''}
 
@@ -23,12 +23,12 @@ def test_play_match():
 
 
 def test_play_set():
-    output = game.play_set(test_player1, test_player2)
+    output = game.play_set(test_player1, test_player3)
     print(output)
 
 
 def test_play_game():
-    output = game.play_game(test_player1, test_player2)
+    output = game.play_game(test_player1, test_player3)
     print(output)
 
 
@@ -48,4 +48,5 @@ def test_play_tiebreak():
 
 
 if __name__ == '__main__':
-    test_play_tiebreak()
+    # test_play_set()
+    test_play_match()

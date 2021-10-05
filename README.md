@@ -20,23 +20,23 @@ with a 50/50 coin toss is too much.
 ## Technical Specifications
 
 ### Player class
-'''
+```
 {'Id': int,
 'Power': float,
 'Technique': float,
 'Endurance': float
 }
-'''
+```
 
 ### Bracket class
-'''
+```
 {'seed': int,
 'p1': object,
 'p2': object,
 'winner': object,
 'score': string
 }
-'''
+```
 
 
 ## What's missing
@@ -47,5 +47,5 @@ with a 50/50 coin toss is too much.
 
 
 ## References:
-[Important skills for a tennis player](https://tennisfiles.com/8-critical-tennis-skills-how-test-them/)
-[Tennis results on the BBC website](https://www.bbc.co.uk/sport/tennis/results)
+- [Important skills for a tennis player](https://tennisfiles.com/8-critical-tennis-skills-how-test-them/)
+- [Tennis results on the BBC website](https://www.bbc.co.uk/sport/tennis/results)

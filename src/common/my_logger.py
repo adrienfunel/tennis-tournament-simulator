@@ -8,6 +8,10 @@ import logging
 
 
 def set_logger():
+    """
+    Function to set up the loggers parameters.
+    :return:
+    """
 
     log_dir = os.path.abspath('../logs')
     if not os.path.exists(log_dir):
@@ -28,4 +32,4 @@ def set_logger():
     logger.addHandler(file_handler)
     logger.addHandler(stream_handler)
 
-    logger.info("Logging started in {}".format(log_dir))
+    logger.info("Logging started in {}\n".format(log_dir))

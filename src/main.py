@@ -11,6 +11,8 @@ from common import my_logger
 from organisation import play_rounds
 
 
+logger = logging.getLogger()
+
 def setup():
     my_logger.set_logger()
 
@@ -23,6 +25,8 @@ def main():
               "Nb: to be valid the number of participants must be a power of 2 (i.e 2, 4, 8, 16, etc.).")
         nb_players = get_input_players()
 
+    logger.info("****** TENNIS TOURNAMENT SIMULATION STARTING ******")
+
     play_rounds(nb_players)
 
 
@@ -34,4 +38,4 @@ if __name__ == "__main__":
     start_time = time.time()
     setup()
     main()
-    print("--- %s seconds ---" % round((time.time() - start_time), 6))
+    logger.info("--- The service ran in %s seconds ---\n\n\n" % round((time.time() - start_time), 6))

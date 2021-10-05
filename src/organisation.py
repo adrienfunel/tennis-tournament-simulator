@@ -4,9 +4,12 @@ Date: Sept-2021
 Summary: pre-processing module
 """
 import random
+import logging
 
 from players import Player
 from brackets import Bracket
+
+logger = logging.getLogger()
 
 
 def generate_players(nb_participants):
@@ -18,26 +21,28 @@ def generate_players(nb_participants):
     return list_players
 
 
-def play_rounds():
-    participants = generate_players(8)
+def play_rounds(nb_players):
+    participants = generate_players(nb_players)
     Tournament = Bracket()
     Tournament.add_participants(participants)
-    print("There are {} rounds".format(Tournament.nb_rounds))
+    logger.info("Tournament has been initialized with {} participants and {} rounds.".format(Tournament.nb_players,
+                                                                                             Tournament.nb_rounds))
+    logger.info("There are {} rounds".format(Tournament.nb_rounds))
     Tournament.generate_round_brackets()
+    logger.info("The first round brackets have been generated. There are {} games to be played.\n".format(len(Tournament.brackets)))
     for i in range(0, Tournament.nb_rounds):
-        print("This is round nb: {}".format(i+1))
-        print(Tournament.brackets)
-        Tournament.play_games()
+        logger.info("This is round nb: {}".format(i+1))
+        logger.info(Tournament.brackets)
+        Tournament.play_matches()
         # print([x for x in round_brackets if x['seed'] == 1])
         if i != Tournament.nb_rounds-1:
             # Last round is the finale, no further brackets
             Tournament.generate_next_round()
-            print("There are {} players remaining".format(2*len(Tournament.brackets)))
+            logger.info("There are {} players remaining".format(2*len(Tournament.brackets)))
 
-    print("Finale results: {}".format(Tournament.brackets))
+    logger.info("Finale results: {}".format(Tournament.brackets[0]))
+    logger.info("The tournament winner is: {}".format(Tournament.brackets[0]['winner']))
 
 
 def attribute_score():
     return round(random.uniform(0, 1), 2)
-
-

@@ -47,4 +47,3 @@ class Bracket:
 
     def play_matches(self):
         self.brackets = list(map(play_match, self.brackets))
-
