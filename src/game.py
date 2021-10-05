@@ -4,23 +4,30 @@ Date: Sept-2021
 Summary: simulate a competitive tennis game
 """
 import random
+import logging
+
+logger = logging.getLogger()
 
 
 def play_match(bracket):
     player1 = bracket['p1']
     player2 = bracket['p2']
+    score = []
 
     # score string example: 6-2;3-6;7-6;6-1
+    logger.info("The match player {} v. player {} has started.".format(player1.playerid(), player2.playerid()))
 
     # Play the tennis game here
     sets_p1 = 0
     sets_p2 = 0
     while sets_p1 < 3 and sets_p2 < 3:
-        set_outcome = play_set(player1, player2)
+        set_outcome, score_set = play_set(player1, player2)
         if set_outcome == "set p1":
             sets_p1 += 1
+            score.append(score_set)
         elif set_outcome == "set p2":
             sets_p2 += 1
+            score.append(score_set)
 
     if sets_p1 == 3:
         winner = player1
@@ -31,7 +38,7 @@ def play_match(bracket):
                     'p1': bracket['p1'],
                     'p2': bracket['p2'],
                     'winner': winner,
-                    'score': '6-2'})
+                    'score': ';'.join(score)})
 
     return bracket
 
@@ -60,9 +67,9 @@ def play_set(p1, p2):
         print("Set score is {}:{}".format(games_p1, games_p2))
 
     if games_p1 >= 6 and games_p2 < 6:
-        return "set p1"
+        return "set p1", "{}-{}".format(games_p1, games_p2)
     elif games_p2 >= 6 and games_p1 < 6:
-        return "set p2"
+        return "set p2", "{}-{}".format(games_p1, games_p2)
     elif games_p1 == games_p2 == 6:
         print("TIEBREAK")
         return play_tiebreak(p1, p2)
@@ -178,6 +185,6 @@ def play_tiebreak(p1, p2):
 
     print("Tiebreak final score is {}:{}".format(tie_score[0], tie_score[1]))
     if tie_score[0] > tie_score[1]:
-        return "set p1"
+        return "set p1", "7({})-6({})".format(tie_score[0], tie_score[1])
     elif tie_score[0] < tie_score[1]:
-        return "set p2"
+        return "set p2", "6({})-7({})".format(tie_score[0], tie_score[1])
