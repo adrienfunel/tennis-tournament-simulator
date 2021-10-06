@@ -20,7 +20,11 @@ def generate_players(nb_participants):
     """
     list_players = []
     for i in range(0, nb_participants):
-        instance_player = Player(str(i + 1), attribute_score(), attribute_score(), attribute_score())
+        instance_player = Player(str(i + 1),
+                                 attribute_score(),
+                                 attribute_score(),
+                                 attribute_score()
+                                 )
         list_players.append(instance_player)
 
     return list_players
@@ -36,15 +40,19 @@ def play_rounds(nb_players):
     Tournament = Bracket()
     Tournament.add_participants(participants)
     logger.info("Tournament has been initialized with {} participants and {} rounds.".format(Tournament.nb_players,
-                                                                                             Tournament.nb_rounds))
+                                                                                             Tournament.nb_rounds
+                                                                                             )
+                )
     logger.info("There are {} rounds".format(Tournament.nb_rounds))
     Tournament.generate_round_brackets()
-    logger.info("The first round brackets have been generated. There are {} games to be played.\n".format(len(Tournament.brackets)))
+    logger.info("The first round brackets have been generated. There are {} games to be played.\n"
+                .format(len(Tournament.brackets)))
+
     for i in range(0, Tournament.nb_rounds):
         logger.info("This is round nb: {}".format(i+1))
         logger.info(Tournament.brackets)
         Tournament.play_matches()
-        # print([x for x in round_brackets if x['seed'] == 1])
+
         if i != Tournament.nb_rounds-1:
             # Last round is the finale, no further brackets
             Tournament.generate_next_round()

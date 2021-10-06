@@ -10,11 +10,12 @@ import logging
 from common import my_logger
 from organisation import play_rounds
 
-
 logger = logging.getLogger()
+
 
 def setup():
     my_logger.set_logger()
+
 
 def main():
     # main entry point

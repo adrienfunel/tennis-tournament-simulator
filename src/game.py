@@ -40,11 +40,15 @@ def play_match(bracket):
                     'p1': bracket['p1'],
                     'p2': bracket['p2'],
                     'winner': winner,
-                    'score': concat_score(score)})
+                    'score': concat_score(score)
+                    }
+                   )
 
     logger.info("The game {} has been won by the player {} on the score of {}".format(bracket['seed'],
                                                                                       winner.playerid(),
-                                                                                      concat_score(score)))
+                                                                                      concat_score(score)
+                                                                                      )
+                )
 
     return bracket
 
@@ -112,13 +116,21 @@ def play_game(p1, p2):
                     .translate(str.maketrans({'1': '15',
                                               '2': '30',
                                               '3': '40',
-                                              '4': 'game'})))
+                                              '4': 'game'
+                                              }
+                                             )
+                               )
+                    )
 
     logger.info("Game final score is: {}:{}".format(points_p1, points_p2)
                 .translate(str.maketrans({'1': '15',
                                           '2': '30',
                                           '3': '40',
-                                          '4': 'game'})))
+                                          '4': 'game'
+                                          }
+                                         )
+                           )
+                )
 
     if points_p1 == 4:
         return "game p1"
@@ -164,7 +176,11 @@ def play_deuce(p1, p2):
                     .translate(str.maketrans({'0': '40',
                                               '1': 'Ad',
                                               '2': 'game',
-                                              '-': 'p2 '})))
+                                              '-': 'p2 '
+                                              }
+                                             )
+                               )
+                    )
 
     if deuce_points == 2:
         return "game p1"

@@ -29,20 +29,21 @@ class Bracket:
                  'p1': faceoff[0],
                  'p2': faceoff[1],
                  'winner': None,
-                 'score': ''}
+                 'score': ''
+                 }
             )
 
     def generate_next_round(self):
         prev_rounds = [self.brackets[i:i + 2] for i in range(0, len(self.brackets), 2)]
         self.brackets = []
         for i, faceoff in enumerate(prev_rounds):
-            # print("The faceoff is {}".format(faceoff))
             self.brackets.append(
                 {'seed': i + 1,
                  'p1': faceoff[0]['winner'],
                  'p2': faceoff[1]['winner'],
                  'winner': None,
-                 'score': ''}
+                 'score': ''
+                 }
             )
 
     def play_matches(self):
