@@ -6,15 +6,12 @@ Service designed to simulate a multi-player tennis tournament and provide the ou
 
 
 ## Requirements
-
- The code must compile (if applicable for the language chosen) and run without crashes/errors.
- The tournament should be a single-elimination tournament.
- The simulation should work for any number of players between 2 and 64 inclusive.
- There are no concrete requirements on the input/output formats but the simulation should be able
-to produce data such as a list of all games played and their results.
- You may make reasonable assumptions about anything not explicitly mentioned in this document, as
-long as your assumptions do not oversimplify the exercise. For example, simulating an entire match
-with a 50/50 coin toss is too much.
+- The code must run without crashes/errors
+- The tournament should be a single-elimination tournament
+- The simulation should work for any number of players between 2 and 64 inclusive
+- There are no concrete requirements on the input/output formats but the simulation should be able
+to produce data such as a list of all games played and their results
+- You may make reasonable assumptions, as ong as your assumptions do not oversimplify the exercise
 
 
 ## Technical Specifications
@@ -38,6 +35,12 @@ with a 50/50 coin toss is too much.
 }
 ```
 
+### Logging
+The logging strategy is set up in `src/common/my_logger.py`. The logging level is INFO and contains all information
+about the service run and the games simulation. The logging module will create a new file in the project folder to write
+its logs. There are two handler: a file handler to write and store logs, and a stream handler to displays the logs
+during execution.
+
 
 ## What's missing
 - A data layer to store the player's information
@@ -49,3 +52,4 @@ with a 50/50 coin toss is too much.
 ## References:
 - [Important skills for a tennis player](https://tennisfiles.com/8-critical-tennis-skills-how-test-them/)
 - [Tennis results on the BBC website](https://www.bbc.co.uk/sport/tennis/results)
+- [Tennis scoring system](https://www.onlinetennisinstruction.com/tennisscoring/)
