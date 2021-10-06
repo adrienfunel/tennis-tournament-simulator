@@ -13,6 +13,11 @@ logger = logging.getLogger()
 
 
 def generate_players(nb_participants):
+    """
+    Function to generate the list of participants along with their skill levels
+    :param nb_participants: int representing how many players are participating
+    :return: list of instances of the Player class representing the participants
+    """
     list_players = []
     for i in range(0, nb_participants):
         instance_player = Player(str(i + 1), attribute_score(), attribute_score(), attribute_score())
@@ -22,6 +27,11 @@ def generate_players(nb_participants):
 
 
 def play_rounds(nb_players):
+    """
+    Function to organise and run the successive rounds of the tournament.
+    :param nb_players: int representing how many players are participating
+    :return: N/A
+    """
     participants = generate_players(nb_players)
     Tournament = Bracket()
     Tournament.add_participants(participants)
@@ -45,4 +55,8 @@ def play_rounds(nb_players):
 
 
 def attribute_score():
+    """
+    Function to randomly attribute skill levels.
+    :return: float between 0 and 1
+    """
     return round(random.uniform(0, 1), 2)
