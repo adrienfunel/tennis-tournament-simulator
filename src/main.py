@@ -54,5 +54,6 @@ if __name__ == "__main__":
     setup()
     main()
     logger.info("--- The service ran in %s seconds ---\n\n\n"
-                % round((time.time() - start_time), 6)
+                % round((time.time() - start_time), 6
+                        )
                 )

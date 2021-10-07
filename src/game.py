@@ -10,12 +10,20 @@ logger = logging.getLogger()
 
 
 def play_match(bracket):
+    """
+    Function to play the game simulation.
+    :param bracket: object representing the match and containing the players objects
+    :return: bracket object with winner and final score
+    """
     player1 = bracket['p1']
     player2 = bracket['p2']
     score = []
 
     # score string example: 6-2;3-6;7-6;6-1
-    logger.info("The match player {} v. player {} has started.".format(player1.playerid(), player2.playerid()))
+    logger.info("The match player {} v. player {} has started.".format(player1.playerid(),
+                                                                       player2.playerid()
+                                                                       )
+                )
 
     # Play the tennis game here
     sets_p1 = 0
@@ -44,10 +52,11 @@ def play_match(bracket):
                     }
                    )
 
-    logger.info("The game {} has been won by the player {} on the score of {}".format(bracket['seed'],
-                                                                                      winner.playerid(),
-                                                                                      concat_score(score)
-                                                                                      )
+    logger.info("The game {} has been won by the player {} "
+                "on the score of {}".format(bracket['seed'],
+                                            winner.playerid(),
+                                            concat_score(score)
+                                            )
                 )
 
     return bracket
@@ -66,7 +75,7 @@ def play_set(p1, p2):
 
     while not (games_p1 >= 6 and abs(games_p1 - games_p2) >= 2) \
             and not (games_p2 >= 6 and abs(games_p1 - games_p2) >= 2) \
-            and not (games_p1 == games_p2 == 6):
+            and not games_p1 == games_p2 == 6:
         game_outcome = play_game(p1, p2)
         if game_outcome == "game p1":
             games_p1 += 1
@@ -184,8 +193,7 @@ def play_deuce(p1, p2):
 
     if deuce_points == 2:
         return "game p1"
-    elif deuce_points == -2:
-        return "game p2"
+    return "game p2"
 
 
 def play_tiebreak(p1, p2):
@@ -210,9 +218,13 @@ def play_tiebreak(p1, p2):
     logger.info("Tiebreak final score is {}:{}".format(tie_score[0], tie_score[1]))
     if tie_score[0] > tie_score[1]:
         return "set p1", "7({})-6({})".format(tie_score[0], tie_score[1])
-    elif tie_score[0] < tie_score[1]:
-        return "set p2", "6({})-7({})".format(tie_score[0], tie_score[1])
+    return "set p2", "6({})-7({})".format(tie_score[0], tie_score[1])
 
 
 def concat_score(sets):
+    """
+    Function to concatenate sets scores
+    :param sets: list of score from individual sets
+    :return: string representing the score of the whole game
+    """
     return ';'.join(sets)

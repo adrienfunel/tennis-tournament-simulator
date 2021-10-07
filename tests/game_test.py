@@ -17,7 +17,8 @@ test_bracket = {'seed': 1,
                 'p1': test_player1,
                 'p2': test_player2,
                 'winner': None,
-                'score': ''}
+                'score': ''
+                }
 
 
 class TestGame(unittest.TestCase):
@@ -26,15 +27,12 @@ class TestGame(unittest.TestCase):
     def test_play_match(self, mocked_set):
         mocked_set.return_value = "set p1", "6-0"
 
-        expected_bracket = test_bracket = {'seed': 1,
-                                           'p1': test_player1,
-                                           'p2': test_player2,
-                                           'winner': test_player1,
-                                           'score': '6-0;6-0;6-0'}
-
-        input_expected = [
-            (test_bracket, expected_bracket)
-        ]
+        expected_bracket = {'seed': 1,
+                            'p1': test_player1,
+                            'p2': test_player2,
+                            'winner': test_player1,
+                            'score': '6-0;6-0;6-0'
+                            }
 
         result = game.play_match(test_bracket)
 
