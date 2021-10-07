@@ -39,9 +39,10 @@ def play_rounds(nb_players):
     participants = generate_players(nb_players)
     Tournament = Bracket()
     Tournament.add_participants(participants)
-    logger.info("Tournament has been initialized with {} participants and {} rounds.".format(Tournament.nb_players,
-                                                                                             Tournament.nb_rounds
-                                                                                             )
+    logger.info("Tournament has been initialized with {} participants "
+                "and {} rounds.".format(Tournament.nb_players,
+                                        Tournament.nb_rounds
+                                        )
                 )
     logger.info("There are {} rounds".format(Tournament.nb_rounds))
     Tournament.generate_round_brackets()
@@ -49,16 +50,27 @@ def play_rounds(nb_players):
                 .format(len(Tournament.brackets)))
 
     for i in range(0, Tournament.nb_rounds):
-        logger.info("This is round nb: {}".format(i+1))
+        logger.info("The {} is stating.".format(Tournament.nb_rounds - i)
+                    .translate(str.maketrans({'1': 'Final',
+                                              '2': 'Semifinals',
+                                              '3': 'Quarterfinals',
+                                              '4': '4th Round',
+                                              '5': '3rd Round',
+                                              '6': '2nd Round'
+                                              }
+                                             )
+
+                               )
+                    )
         logger.info(Tournament.brackets)
         Tournament.play_matches()
 
-        if i != Tournament.nb_rounds-1:
+        if i != Tournament.nb_rounds - 1:
             # Last round is the finale, no further brackets
             Tournament.generate_next_round()
-            logger.info("There are {} players remaining".format(2*len(Tournament.brackets)))
+            logger.info("There are {} players remaining\n".format(2 * len(Tournament.brackets)))
 
-    logger.info("Finale results: {}".format(Tournament.brackets[0]))
+    logger.info("Final results: {}".format(Tournament.brackets[0]))
     logger.info("The tournament winner is: {}".format(Tournament.brackets[0]['winner']))
 
 
