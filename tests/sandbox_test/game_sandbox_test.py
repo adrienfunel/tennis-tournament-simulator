@@ -14,7 +14,8 @@ test_bracket = {'seed': 1,
                 'p1': test_player1,
                 'p2': test_player3,
                 'winner': None,
-                'score': ''}
+                'score': ''
+                }
 
 
 def test_play_match():

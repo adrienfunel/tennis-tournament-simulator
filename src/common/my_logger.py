@@ -10,9 +10,8 @@ import logging
 def set_logger():
     """
     Function to set up the loggers parameters.
-    :return:
+    :return: N/A
     """
-
     log_dir = os.path.abspath('../logs')
     if not os.path.exists(log_dir):
         os.mkdir(log_dir)
@@ -20,7 +19,7 @@ def set_logger():
     log_level = 'INFO'
     logging_format = '%(asctime)s:%(name)s:%(message)s'
 
-    file_handler = logging.FileHandler(os.path.join(log_dir,'Tournament_logs.log'))
+    file_handler = logging.FileHandler(os.path.join(log_dir, 'Tournament_logs.log'))
     file_handler.setFormatter(logging.Formatter(logging_format))
     file_handler.setLevel(log_level)
 
