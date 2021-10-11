@@ -36,6 +36,8 @@ def play_match(bracket):
         elif set_outcome == "set p2":
             sets_p2 += 1
             score.append(score_set)
+        else:
+            raise Exception("Unexpected output from play_set.")
 
         logger.info("Current match score: {}".format(concat_score(score)))
 
@@ -43,6 +45,8 @@ def play_match(bracket):
         winner = player1
     elif sets_p2 == 3:
         winner = player2
+    else:
+        raise Exception("Match function broke.")
 
     bracket.update({'seed': bracket['seed'],
                     'p1': bracket['p1'],
@@ -81,6 +85,8 @@ def play_set(p1, p2):
             games_p1 += 1
         elif game_outcome == "game p2":
             games_p2 += 1
+        else:
+            raise Exception("Unexpected output from play_point.")
 
         logger.info("Set score is {}:{}".format(games_p1, games_p2))
 
@@ -93,6 +99,8 @@ def play_set(p1, p2):
     elif games_p1 == games_p2 == 6:
         logger.info("TIEBREAK")
         return play_tiebreak(p1, p2)
+    else:
+        raise Exception("Set function broke.")
 
 
 def play_game(p1, p2):
@@ -121,6 +129,8 @@ def play_game(p1, p2):
             points_p2 += 1
         elif point_outcome == "draw":
             pass
+        else:
+            raise Exception("Unexpected output from play_point.")
         logger.info("Game score is: {}:{}".format(points_p1, points_p2)
                     .translate(str.maketrans({'1': '15',
                                               '2': '30',
@@ -147,6 +157,8 @@ def play_game(p1, p2):
         return "game p2"
     elif points_p1 == points_p2 == 3:
         return play_deuce(p1, p2)
+    else:
+        raise Exception("Game function broke.")
 
 
 def play_point(p1, p2):
@@ -180,6 +192,8 @@ def play_deuce(p1, p2):
             deuce_points += 1
         elif deuce_outcome == "point p2":
             deuce_points -= 1
+        else:
+            raise Exception("Unexpected output from play_point.")
 
         logger.info("Deuce points are {}".format(deuce_points)
                     .translate(str.maketrans({'0': '40',
@@ -213,6 +227,8 @@ def play_tiebreak(p1, p2):
             tie_score[0] += 1
         elif tiebreak_outcome == "point p2":
             tie_score[1] += 1
+        else:
+            raise Exception("Tiebreak function broke.")
         logger.info("Tiebreak score is {}".format(tie_score))
 
     logger.info("Tiebreak final score is {}:{}".format(tie_score[0], tie_score[1]))
